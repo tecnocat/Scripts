@@ -1,0 +1,119 @@
+#!/bin/bash
+
+# Script para corregir el problema de permisos que pueda haber con un desarrollo
+# Drupal y los archivos .svn
+
+# Esto a demas de poner los permisos correctos a Drupal también corrige los
+# permisos erroneos puestos al SVN evitando el mal uso de sudo svn ci/up/add/del
+# etc... que provoca problemas con la carpeta files por la mezcla de .svn creados
+# como root, files como usuario y archivos en files como www-data por apache.
+
+# Comprobamos que solo root pueda usar este archivo ya que es necesario hacer
+# cambios de grupos.
+if [[ $EUID -ne 0 ]]; then
+  echo
+  echo 'Este script debe ser ejecutado por el usuario root'
+  echo "Escriba sudo $0 para porder ejecutarlo."
+  echo
+  exit 1
+fi
+# Pre-seleccionamos el current path y permitimos elegir
+CURRENT_DIR=`pwd`
+while true; do
+  echo
+  read -p "¿En que carpeta quieres realizar los cambios de permisos y grupos? [$CURRENT_DIR] " DIR
+  # Si el usuario no ha inputado nada cojemos el current
+  if [ -z $DIR ]; then
+    DIR=$CURRENT_DIR
+  fi
+  # Si el directorio existe no volvemos a pedir la ruta
+  if [ -d $DIR ]; then
+    break;
+  else
+    echo
+    echo "$DIR no existe, compruebe la ruta y escriba de nuevo."
+  fi
+done
+# Comprobamos que es una carpeta con la estructura de archivos drupal valida,
+# si no salimos del script
+DRUPAL_CRON=$DIR/cron.php
+DRUPAL_UPDATE=$DIR/update.php
+DRUPAL_XMLRPC=$DIR/xmlrpc.php
+DRUPAL_SETTINGS=$DIR/sites/default/settings.php
+if [ -e $DRUPAL_CRON ] && [ -e $DRUPAL_UPDATE ] && [ -e $DRUPAL_XMLRPC ] && [ -e $DRUPAL_SETTINGS ]; then
+  echo
+  echo '---------------------------------------------------------------------------'
+  echo 'Directorio donde se realizarán todos los cambios:'
+  echo
+  echo $DIR
+  # Ultima confirmación antes de iniciar el proceso
+  while true; do
+    echo
+    read -p '¿Desea corregir los permisos y grupos en la ruta actual? [y/n] ' case
+    case $case in
+      y ) break;;
+      s ) break;;
+      n ) exit;;
+      * ) echo "Por favor responda y o n";;
+    esac
+  done
+  echo '---------------------------------------------------------------------------'
+  echo 'Las carpetas .svn se crean como usuario o como root cuando se usa sudo.'
+  echo 'Es posible que algunas carpetas tengan un usuario:grupo incorrecto.'
+  echo 'Para solucionar esto se va establecer toda la estructura .svn a tu usuario.'
+  echo
+  # Solicitamos el usuario para corregir los .svn
+  echo '¿Cual es el nombre de usuario que usas para login?'
+  read usuario
+  echo
+  echo '---------------------------------------------------------------------------'
+  echo "Procesando cambios de permisos y usuario:grupo con ${usuario}:${usuario} ..."
+  # Primero ponemos todos los archivos .php a +rx
+  echo 'Cambiando permisos a todos los archivos ...'
+  find $DIR -type f -exec chmod 755 '{}' \;
+  # protegemos el settings.php contra escritura
+  echo 'Protegiendo archivo de configuración settings.php ...'
+  chmod 444 $DIR/sites/default/settings.php
+  chmod 444 $DIR/sites/default/default.settings.php
+  # ponemos las carpetas como establece http://drupal.org
+  echo 'Cambiando permisos a todas las carpetas ...'
+  find $DIR -type d -exec chmod 755 '{}' \;
+  # cambiamos permiso de files a +rwx
+  echo 'Cambiando permisos de la carpeta files/* ...'
+  chmod -R 777 $DIR/sites/default/files
+  # cambiamos usuario y grupo al proyecto
+  echo 'Cambiando usuario:grupo a todo el proyecto ...'
+  chown -R ${usuario}:${usuario} $DIR
+  # cambiamos usuario y grupo a files para drupal y apache
+  echo 'Cambiando usuario:grupo a la carpeta files/*'
+  chown -R www-data:www-data $DIR/sites/default/files
+  # restablecemos a nuestro usuario si se creo el svn como root
+  echo 'Cambiando usuario:grupo a todos los archivos del svn'
+  find $DIR -type d -name .svn -exec chown -R ${usuario}:${usuario} '{}' \;
+  # finalizado
+  echo 'Done.'
+  echo
+  echo '---------------------------------------------------------------------------'
+  echo "Todos los archivos .svn han sido cambiados al usuario y grupo ${usuario}"
+  echo 'Para realizar un comando svn no debes usar sudo, simplemente svn ci etc...'
+  echo
+  echo 'La carpeta /files ha sido cambiada al usuario y grupo www-data para que no'
+  echo 'existan problemas con la creación de carpetas y archivos en Drupal y apache'
+  echo
+  echo 'Esto se ha hecho así por que apache corre como usuario www-data y la creación'
+  echo 'de los archivos y carpetas en files/ aparecen como usuario y grupo www-data'
+  echo
+  echo 'Todos los permisos se han cambiado segun las directivas de http://drupal.org'
+  echo
+  echo '/ -> files, folders and subfolders on 755'
+  echo '/default/files -> files and subfolders on 777'
+  echo '/default/settings.php -> on 444'
+  echo '/default/default.settings.php -> on 444'
+  echo
+  echo
+else
+  echo
+  echo "$DIR no parece ser una carpeta de Drupal válida"
+  echo
+  exit 1
+fi

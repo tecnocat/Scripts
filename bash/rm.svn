@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Script que borra recursivamente todas las carpetas que crea el svn del
+# directorio actual, util cuando hay algun problema con el svn
+
+echo
+echo '---------------------------------------------------------------------------'
+echo 'Directorio de trabajo:'
+pwd
+while true; do
+  echo
+  read -p '¿Desea borrar todas las carpetas .svn del directorio actual? [y/n] ' case
+  case $case in
+    y ) break;;
+    s ) break;;
+    n ) exit;;
+    * ) echo "Por favor responda y o n";;
+  esac
+done
+echo '---------------------------------------------------------------------------'
+echo "Eliminando recursivamente carpetas .svn de:"
+echo
+pwd
+echo
+find . -type d -name .svn -exec rm -rfv '{}' \;
+echo
+echo "Finalizado."
+echo

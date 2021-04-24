@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>php-example.php</title>
+</head>
+<body>
+<pre style='color:#dcdcdc;background-color:#201f1f;'>
+<b><span style='color:#e8e800;'>&lt;?php</span></b>
+
+<i><span style='color:#7f7f7f;'>/**</span></i>
+<i><span style='color:#7f7f7f;'> * </span></i><b><span style='color:#00c000;'>@file</span></b>
+<i><span style='color:#7f7f7f;'> * Dummy PHP code example for syntax hightlighting</span></i>
+<i><span style='color:#7f7f7f;'> *</span></i>
+<i><span style='color:#7f7f7f;'> * List of types and HTML HEX colors:</span></i>
+<i><span style='color:#7f7f7f;'> *</span></i>
+<i><span style='color:#7f7f7f;'> * Normal Text        #FF8000</span></i>
+<i><span style='color:#7f7f7f;'> * PHP Text           #C3C3C3</span></i>
+<i><span style='color:#7f7f7f;'> * Function           #8E79A5</span></i>
+<i><span style='color:#7f7f7f;'> * Keyword            #E8E800</span></i>
+<i><span style='color:#7f7f7f;'> * Control Structures #78B753</span></i>
+<i><span style='color:#7f7f7f;'> * Loops              #FF8000</span></i>
+<i><span style='color:#7f7f7f;'> * Return             #FF0000</span></i>
+<i><span style='color:#7f7f7f;'> * Special methods    #1E90FF</span></i>
+<i><span style='color:#7f7f7f;'> * Magic Constants    #1E90FF</span></i>
+<i><span style='color:#7f7f7f;'> * Super Variables    #FF8000</span></i>
+<i><span style='color:#7f7f7f;'> * Variables          #00C0C0</span></i>
+<i><span style='color:#7f7f7f;'> * Decimal            #C000C0</span></i>
+<i><span style='color:#7f7f7f;'> * Octal              #FF8000</span></i>
+<i><span style='color:#7f7f7f;'> * Hex                #00C000</span></i>
+<i><span style='color:#7f7f7f;'> * Float              #C000C0</span></i>
+<i><span style='color:#7f7f7f;'> * String             #E85848</span></i>
+<i><span style='color:#7f7f7f;'> * Booleans           #FF8000</span></i>
+<i><span style='color:#7f7f7f;'> * Comment            #7F7F7F</span></i>
+<i><span style='color:#7f7f7f;'> * Backslash Code     #E8E800</span></i>
+<i><span style='color:#7f7f7f;'> * Other              #78B753</span></i>
+<i><span style='color:#7f7f7f;'> */</span></i>
+
+<b><span style='color:#8e79a5;'>echo</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ffff00;'>&lt;&lt;&lt;DUMMY</span></b>
+<span style='color:#e85848;'>  this is a normal text string</span>
+<b><span style='color:#ffff00;'>DUMMY;</span></b>
+
+<b><span style='color:#e8e800;'>function</span></b><b><span style='color:#c3c3c3;'> my_function</span></b><b><span style='color:#78b753;'>(</span></b><b><span style='color:#00c0c0;'>$args</span></b><b><span style='color:#c3c3c3;'> = </span></b><b><span style='color:#8e79a5;'>array</span></b><b><span style='color:#78b753;'>())</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ff8000;'>{</span></b>
+
+<b><span style='color:#c3c3c3;'>  </span></b><b><span style='color:#00c0c0;'>$file</span></b><b><span style='color:#c3c3c3;'>  = </span></b><b><span style='color:#1e90ff;'>__FILE__</span></b><b><span style='color:#78b753;'>;</span></b>
+<b><span style='color:#c3c3c3;'>  </span></b><b><span style='color:#00c0c0;'>$query</span></b><b><span style='color:#c3c3c3;'> = </span></b><b><span style='color:#ff8000;'>$_GET</span></b><b><span style='color:#78b753;'>[</span></b><span style='color:#e85848;'>'q'</span><b><span style='color:#78b753;'>];</span></b>
+
+<b><span style='color:#c3c3c3;'>  </span></b><b><span style='color:#ff8000;'>foreach</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#78b753;'>(</span></b><b><span style='color:#8e79a5;'>explode</span></b><b><span style='color:#78b753;'>(</span></b><span style='color:#e85848;'>'/'</span><b><span style='color:#78b753;'>,</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#00c0c0;'>$query</span></b><b><span style='color:#78b753;'>)</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#78b753;'>as</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#00c0c0;'>$arg</span></b><b><span style='color:#78b753;'>)</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ff8000;'>{</span></b>
+
+<b><span style='color:#c3c3c3;'>    </span></b><b><span style='color:#78b753;'>if</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#78b753;'>(</span></b><b><span style='color:#00c0c0;'>$arg</span></b><b><span style='color:#c3c3c3;'> === </span></b><b><span style='color:#ff8000;'>TRUE</span></b><b><span style='color:#78b753;'>)</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ff8000;'>{</span></b>
+<b><span style='color:#c3c3c3;'>      </span></b><b><span style='color:#00c0c0;'>$args</span></b><b><span style='color:#c3c3c3;'> = </span></b><b><span style='color:#c000c0;'>0</span></b><b><span style='color:#78b753;'>;</span></b>
+<b><span style='color:#c3c3c3;'>      </span></b><b><span style='color:#78b753;'>break</span></b><b><span style='color:#78b753;'>;</span></b>
+<b><span style='color:#c3c3c3;'>    </span></b><b><span style='color:#ff8000;'>}</span></b>
+<b><span style='color:#c3c3c3;'>    </span></b><b><span style='color:#78b753;'>else</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ff8000;'>{</span></b>
+<b><span style='color:#c3c3c3;'>      </span></b><b><span style='color:#00c0c0;'>$args</span></b><b><span style='color:#78b753;'>[]</span></b><b><span style='color:#c3c3c3;'> = </span></b><span style='color:#e85848;'>&quot;</span><b><span style='color:#ffff00;'>\n</span></b><span style='color:#e85848;'>&quot;</span><b><span style='color:#c3c3c3;'> . </span></b><b><span style='color:#00c0c0;'>$arg</span></b><b><span style='color:#78b753;'>;</span></b>
+<b><span style='color:#c3c3c3;'>    </span></b><b><span style='color:#ff8000;'>}</span></b>
+<b><span style='color:#c3c3c3;'>  </span></b><b><span style='color:#ff8000;'>}</span></b>
+<b><span style='color:#ff8000;'>}</span></b>
+
+<b><span style='color:#e8e800;'>class</span></b><b><span style='color:#c3c3c3;'> myClass</span></b><b><span style='color:#78b753;'>()</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ff8000;'>{</span></b>
+
+<b><span style='color:#c3c3c3;'>  </span></b><b><span style='color:#e8e800;'>function</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#1e90ff;'>__construct</span></b><b><span style='color:#78b753;'>()</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ff8000;'>{</span></b>
+
+<b><span style='color:#c3c3c3;'>    </span></b><b><span style='color:#00c0c0;'>$this</span></b><b><span style='color:#c3c3c3;'>-&gt;loaded = </span></b><b><span style='color:#ff8000;'>FALSE</span></b><b><span style='color:#78b753;'>;</span></b>
+<b><span style='color:#c3c3c3;'>    </span></b><b><span style='color:#00c0c0;'>$this</span></b><b><span style='color:#c3c3c3;'>-&gt;trunk  = </span></b><b><span style='color:#00c000;'>0x08fb8a</span></b><b><span style='color:#78b753;'>;</span></b>
+<b><span style='color:#c3c3c3;'>  </span></b><b><span style='color:#ff8000;'>}</span></b>
+
+<b><span style='color:#c3c3c3;'>  </span></b><b><span style='color:#e8e800;'>function</span></b><b><span style='color:#c3c3c3;'> turn_on</span></b><b><span style='color:#78b753;'>()</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ff8000;'>{</span></b>
+
+<b><span style='color:#c3c3c3;'>    </span></b><b><span style='color:#e8e800;'>parent</span></b><b><span style='color:#ff8000;'>::</span></b><b><span style='color:#c3c3c3;'>Execute</span></b><b><span style='color:#78b753;'>();</span></b>
+
+<b><span style='color:#c3c3c3;'>    </span></b><b><span style='color:#ff0000;'>return</span></b><b><span style='color:#c3c3c3;'> </span></b><b><span style='color:#ff8000;'>TRUE</span></b><b><span style='color:#78b753;'>;</span></b>
+<b><span style='color:#c3c3c3;'>  </span></b><b><span style='color:#ff8000;'>}</span></b>
+<b><span style='color:#ff8000;'>}</span></b>
+</pre>
+</body>
+</html>

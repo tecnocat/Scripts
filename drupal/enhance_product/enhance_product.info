@@ -1,0 +1,7 @@
+; $Id: enhance_product.info,v 1 2011/08/30 11:07:00 dries Exp $
+name = Enhance product
+description = Provide product block
+package = optional
+version = VERSION
+version = "5.3"
+project = "company"

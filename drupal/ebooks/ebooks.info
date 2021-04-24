@@ -1,0 +1,14 @@
+; $Id: ebook.info,v 1.0 2010/11/27 18:33:53 tecnocat Exp $
+name = eBook
+description = Provides a eBook special functions.
+package = eBook
+dependencies[] = path
+dependencies[] = node
+dependencies[] = taxonomy
+dependencies[] = nodeaccess
+dependencies[] = taxonomy_access_user
+dependencies[] = transliteration
+dependencies[] = xml_parser
+version = "6.x-1.0"
+core = "6.x"
+php = "5.x"

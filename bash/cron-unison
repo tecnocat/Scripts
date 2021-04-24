@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Remove path for security reasons
+unset PATH
+
+# Programs path (verify for your distro)
+CAT=/bin/cat;
+FIND=/usr/bin/find;
+UNISON=/usr/bin/unison;
+BASENAME=/usr/bin/basename;
+
+#find ~/.unison -type f -name '*.prf' -exec unison -auto -batch `basename '{}'` \;
+for PRF in $($FIND ~/.unison -type f -name '*.prf'); do
+  PROFILE=$($BASENAME $PRF);
+  echo
+  echo
+  echo 'Running unison for:'
+  echo '**********************************************'
+  $CAT $PRF
+  echo
+  $UNISON -auto -batch $PROFILE
+  echo
+  echo 'Done.'
+done

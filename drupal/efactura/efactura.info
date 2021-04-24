@@ -1,0 +1,6 @@
+; $Id$
+name = eFactura
+description = Funciones específicas para eFactura.
+core = 6.x
+package = "eFactura"
+version = "6.x-1.0"

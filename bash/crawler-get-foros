@@ -1,0 +1,25 @@
+#!/bin/bash
+
+trim() { echo $1; }
+
+echo "Descargando 1...";
+wget -q "http://www.foroswebgratis.com/foro-mercados_medievales-21726.htm";
+for i in {2..80}; do
+  echo "Descargando $i...";
+  wget -q --restrict-file-names=ascii "http://www.foroswebgratis.com/foro-mercados_medievales-21726-$i.htm";
+done;
+for foro in $(ls foro-*.htm); do
+  echo "Procesando temas de $foro";
+  foromd5=$(md5sum $foro | cut -d ' ' -f 1);
+  for tema in $(cat $foro | grep 'href="tema' | grep 'flinkpares' | grep '<b>' | cut -d '"' -f 6); do
+    wget -q --restrict-file-names=ascii "http://www.foroswebgratis.com/$tema";
+    for htm in $(ls tema-*.htm); do
+      temamd5=$(md5sum $htm | cut -d ' ' -f 1);
+      visitas=$(trim $(cat $foro | grep -A 3 $tema | grep -A 3 'flvisitas' | grep -A 1 'fnormalpares' | grep '\/td' | cut -d '<' -f 1));
+      echo "     downloaded   --->   hash: $temamd5 views: $visitas file: $tema";
+      mv -f $htm temahash-$temamd5-visitas-$visitas.html;
+    done;
+  done;
+  mv -f $foro forohash-$foromd5.html
+done;
+echo;

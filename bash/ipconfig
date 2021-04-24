@@ -1,0 +1,9 @@
+#! /bin/bash
+ifconfig
+echo
+echo Gateway"               "Interface
+route -n | awk '/UG/ {printf "%-21s %s\n",$2,$8}'
+echo
+echo DNS Servers
+awk '/nameserver/ {print $2}' /etc/resolv.conf
+echo

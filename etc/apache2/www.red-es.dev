@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+  ServerName www.red-es.dev
+  ServerAdmin root@localhost
+  DocumentRoot /home/tecnocat/workspace/portal_redes
+  <Directory /home/tecnocat/workspace/portal_redes/>
+    Options Indexes +FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+  ErrorLog /var/log/apache2/www.red-es.dev.error.log
+  # Possible values include: debug, info, notice, warn, error, crit,
+  # alert, emerg.
+  LogLevel debug
+  CustomLog /var/log/apache2/www.red-es.dev.access.log combined
+</VirtualHost>

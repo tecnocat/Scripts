@@ -1,0 +1,252 @@
+AD,AND,20,.ad,Andorra,ca
+AE,ARE,784,.ae,United Arab Emirates,'ar-AE,fa,en,hi,ur'
+AF,AFG,4,.af,Afghanistan,'fa-AF,ps,uz-AF,tk'
+AG,ATG,28,.ag,Antigua and Barbuda,en-AG
+AI,AIA,660,.ai,Anguilla,en-AI
+AL,ALB,8,.al,Albania,'sq,el'
+AM,ARM,51,.am,Armenia,hy
+AO,AGO,24,.ao,Angola,pt-AO
+AQ,ATA,10,.aq,Antarctica
+AR,ARG,32,.ar,Argentina,'es-AR,en,it,de,fr,gn'
+AS,ASM,16,.as,American Samoa,'en-AS,sm,to'
+AT,AUT,40,.at,Austria,'de-AT,hr,hu,sl'
+AU,AUS,36,.au,Australia,en-AU
+AW,ABW,533,.aw,Aruba,'nl-AW,es,en'
+AX,ALA,248,.ax,Aland Islands,sv-AX
+AZ,AZE,31,.az,Azerbaijan,'az,ru,hy'
+BA,BIH,70,.ba,Bosnia and Herzegovina,'bs,hr-BA,sr-BA'
+BB,BRB,52,.bb,Barbados,en-BB
+BD,BGD,50,.bd,Bangladesh,'bn-BD,en'
+BE,BEL,56,.be,Belgium,'nl-BE,fr-BE,de-BE'
+BF,BFA,854,.bf,Burkina Faso,fr-BF
+BG,BGR,100,.bg,Bulgaria,'bg,tr-BG'
+BH,BHR,48,.bh,Bahrain,'ar-BH,en,fa,ur'
+BI,BDI,108,.bi,Burundi,'fr-BI,rn'
+BJ,BEN,204,.bj,Benin,fr-BJ
+BL,BLM,652,.gp,Saint Barthélemy,fr
+BM,BMU,60,.bm,Bermuda,'en-BM,pt'
+BN,BRN,96,.bn,Brunei,'ms-BN,en-BN'
+BO,BOL,68,.bo,Bolivia,'es-BO,qu,ay'
+BQ,BES,535,.bq,Bonaire. Saint Eustatius and Saba,'nl,pap,en'
+BR,BRA,76,.br,Brazil,'pt-BR,es,en,fr'
+BS,BHS,44,.bs,Bahamas,en-BS
+BT,BTN,64,.bt,Bhutan,dz
+BV,BVT,74,.bv,Bouvet Island
+BW,BWA,72,.bw,Botswana,'en-BW,tn-BW'
+BY,BLR,112,.by,Belarus,'be,ru'
+BZ,BLZ,84,.bz,Belize,'en-BZ,es'
+CA,CAN,124,.ca,Canada,'en-CA,fr-CA,iu'
+CC,CCK,166,.cc,Cocos Islands,'ms-CC,en'
+CD,COD,180,.cd,Democratic Republic of the Congo,'fr-CD,ln,kg'
+CF,CAF,140,.cf,Central African Republic,'fr-CF,sg,ln,kg'
+CG,COG,178,.cg,Republic of the Congo,'fr-CG,kg,ln-CG'
+CH,CHE,756,.ch,Switzerland,'de-CH,fr-CH,it-CH,rm'
+CI,CIV,384,.ci,Ivory Coast,fr-CI
+CK,COK,184,.ck,Cook Islands,'en-CK,mi'
+CL,CHL,152,.cl,Chile,es-CL
+CM,CMR,120,.cm,Cameroon,'en-CM,fr-CM'
+CN,CHN,156,.cn,China,'zh-CN,yue,wuu,dta,ug,za'
+CO,COL,170,.co,Colombia,es-CO
+CR,CRI,188,.cr,Costa Rica,'es-CR,en'
+CU,CUB,192,.cu,Cuba,es-CU
+CV,CPV,132,.cv,Cape Verde,pt-CV
+CW,CUW,531,.cw,Curaçao,'nl,pap'
+CX,CXR,162,.cx,Christmas Island,'en,zh,ms-CC'
+CY,CYP,196,.cy,Cyprus,'el-CY,tr-CY,en'
+CZ,CZE,203,.cz,Czech Republic,'cs,sk'
+DE,DEU,276,.de,Germany,de
+DJ,DJI,262,.dj,Djibouti,'fr-DJ,ar,so-DJ,aa'
+DK,DNK,208,.dk,Denmark,'da-DK,en,fo,de-DK'
+DM,DMA,212,.dm,Dominica,en-DM
+DO,DOM,214,.do,Dominican Republic,es-DO
+DZ,DZA,12,.dz,Algeria,ar-DZ
+EC,ECU,218,.ec,Ecuador,es-EC
+EE,EST,233,.ee,Estonia,'et,ru'
+EG,EGY,818,.eg,Egypt,'ar-EG,en,fr'
+EH,ESH,732,.eh,Western Sahara,'ar,mey'
+ER,ERI,232,.er,Eritrea,'aa-ER,ar,tig,kun,ti-ER'
+ES,ESP,724,.es,Spain,'es-ES,ca,gl,eu,oc'
+ET,ETH,231,.et,Ethiopia,'am,en-ET,om-ET,ti-ET,so-ET,sid'
+FI,FIN,246,.fi,Finland,'fi-FI,sv-FI,smn'
+FJ,FJI,242,.fj,Fiji,'en-FJ,fj'
+FK,FLK,238,.fk,Falkland Islands,en-FK
+FM,FSM,583,.fm,Micronesia,'en-FM,chk,pon,yap,kos,uli,woe,nkr,kpg'
+FO,FRO,234,.fo,Faroe Islands,'fo,da-FO'
+FR,FRA,250,.fr,France,'fr-FR,frp,br,co,ca,eu,oc'
+GA,GAB,266,.ga,Gabon,fr-GA
+GB,GBR,826,.uk,United Kingdom,'en-GB,cy-GB,gd'
+GD,GRD,308,.gd,Grenada,en-GD
+GE,GEO,268,.ge,Georgia,'ka,ru,hy,az'
+GF,GUF,254,.gf,French Guiana,fr-GF
+GG,GGY,831,.gg,Guernsey,'en,fr'
+GH,GHA,288,.gh,Ghana,'en-GH,ak,ee,tw'
+GI,GIB,292,.gi,Gibraltar,'en-GI,es,it,pt'
+GL,GRL,304,.gl,Greenland,'kl,da-GL,en'
+GM,GMB,270,.gm,Gambia,'en-GM,mnk,wof,wo,ff'
+GN,GIN,324,.gn,Guinea,fr-GN
+GP,GLP,312,.gp,Guadeloupe,fr-GP
+GQ,GNQ,226,.gq,Equatorial Guinea,'es-GQ,fr'
+GR,GRC,300,.gr,Greece,'el-GR,en,fr'
+GS,SGS,239,.gs,South Georgia and the South Sandwich Islands,en
+GT,GTM,320,.gt,Guatemala,es-GT
+GU,GUM,316,.gu,Guam,'en-GU,ch-GU'
+GW,GNB,624,.gw,Guinea-Bissau,'pt-GW,pov'
+GY,GUY,328,.gy,Guyana,en-GY
+HK,HKG,344,.hk,Hong Kong,'zh-HK,yue,zh,en'
+HM,HMD,334,.hm,Heard Island and McDonald Islands
+HN,HND,340,.hn,Honduras,es-HN
+HR,HRV,191,.hr,Croatia,'hr-HR,sr'
+HT,HTI,332,.ht,Haiti,'ht,fr-HT'
+HU,HUN,348,.hu,Hungary,hu-HU
+ID,IDN,360,.id,Indonesia,'id,en,nl,jv'
+IE,IRL,372,.ie,Ireland,'en-IE,ga-IE'
+IL,ISR,376,.il,Israel,'he,ar-IL,en-IL,'
+IM,IMN,833,.im,Isle of Man,'en,gv'
+IN,IND,356,.in,India,'en-IN,hi,bn,te,mr,ta,ur,gu,kn,ml,or,pa,as,bh,sat,ks,ne,sd,kok,doi,mni,sit,sa,fr,lus,inc'
+IO,IOT,86,.io,British Indian Ocean Territory,en-IO
+IQ,IRQ,368,.iq,Iraq,'ar-IQ,ku,hy'
+IR,IRN,364,.ir,Iran,'fa-IR,ku'
+IS,ISL,352,.is,Iceland,'is,en,de,da,sv,no'
+IT,ITA,380,.it,Italy,'it-IT,de-IT,fr-IT,sc,ca,co,sl'
+JE,JEY,832,.je,Jersey,'en,pt'
+JM,JAM,388,.jm,Jamaica,en-JM
+JO,JOR,400,.jo,Jordan,'ar-JO,en'
+JP,JPN,392,.jp,Japan,ja
+KE,KEN,404,.ke,Kenya,'en-KE,sw-KE'
+KG,KGZ,417,.kg,Kyrgyzstan,'ky,uz,ru'
+KH,KHM,116,.kh,Cambodia,'km,fr,en'
+KI,KIR,296,.ki,Kiribati,'en-KI,gil'
+KM,COM,174,.km,Comoros,'ar,fr-KM'
+KN,KNA,659,.kn,Saint Kitts and Nevis,en-KN
+KP,PRK,408,.kp,North Korea,ko-KP
+KR,KOR,410,.kr,South Korea,'ko-KR,en'
+XK,XKX,0,.ks,Kosovo,'sq,sr'
+KW,KWT,414,.kw,Kuwait,'ar-KW,en'
+KY,CYM,136,.ky,Cayman Islands,en-KY
+KZ,KAZ,398,.kz,Kazakhstan,'kk,ru'
+LA,LAO,418,.la,Laos,'lo,fr,en'
+LB,LBN,422,.lb,Lebanon,'ar-LB,fr-LB,en,hy'
+LC,LCA,662,.lc,Saint Lucia,en-LC
+LI,LIE,438,.li,Liechtenstein,de-LI
+LK,LKA,144,.lk,Sri Lanka,'si,ta,en'
+LR,LBR,430,.lr,Liberia,en-LR
+LS,LSO,426,.ls,Lesotho,'en-LS,st,zu,xh'
+LT,LTU,440,.lt,Lithuania,'lt,ru,pl'
+LU,LUX,442,.lu,Luxembourg,'lb,de-LU,fr-LU'
+LV,LVA,428,.lv,Latvia,'lv,ru,lt'
+LY,LBY,434,.ly,Libya,'ar-LY,it,en'
+MA,MAR,504,.ma,Morocco,'ar-MA,fr'
+MC,MCO,492,.mc,Monaco,'fr-MC,en,it'
+MD,MDA,498,.md,Moldova,'ro,ru,gag,tr'
+ME,MNE,499,.me,Montenegro,'sr,hu,bs,sq,hr,rom'
+MF,MAF,663,.gp,Saint Martin,fr
+MG,MDG,450,.mg,Madagascar,'fr-MG,mg'
+MH,MHL,584,.mh,Marshall Islands,'mh,en-MH'
+MK,MKD,807,.mk,Macedonia,'mk,sq,tr,rmm,sr'
+ML,MLI,466,.ml,Mali,'fr-ML,bm'
+MM,MMR,104,.mm,Myanmar,my
+MN,MNG,496,.mn,Mongolia,'mn,ru'
+MO,MAC,446,.mo,Macao,'zh,zh-MO,pt'
+MP,MNP,580,.mp,Northern Mariana Islands,'fil,tl,zh,ch-MP,en-MP'
+MQ,MTQ,474,.mq,Martinique,fr-MQ
+MR,MRT,478,.mr,Mauritania,'ar-MR,fuc,snk,fr,mey,wo'
+MS,MSR,500,.ms,Montserrat,en-MS
+MT,MLT,470,.mt,Malta,'mt,en-MT'
+MU,MUS,480,.mu,Mauritius,'en-MU,bho,fr'
+MV,MDV,462,.mv,Maldives,'dv,en'
+MW,MWI,454,.mw,Malawi,'ny,yao,tum,swk'
+MX,MEX,484,.mx,Mexico,es-MX
+MY,MYS,458,.my,Malaysia,'ms-MY,en,zh,ta,te,ml,pa,th'
+MZ,MOZ,508,.mz,Mozambique,'pt-MZ,vmw'
+NA,NAM,516,.na,Namibia,'en-NA,af,de,hz,naq'
+NC,NCL,540,.nc,New Caledonia,fr-NC
+NE,NER,562,.ne,Niger,'fr-NE,ha,kr,dje'
+NF,NFK,574,.nf,Norfolk Island,en-NF
+NG,NGA,566,.ng,Nigeria,'en-NG,ha,yo,ig,ff'
+NI,NIC,558,.ni,Nicaragua,'es-NI,en'
+NL,NLD,528,.nl,Netherlands,'nl-NL,fy-NL'
+NO,NOR,578,.no,Norway,'no,nb,nn,se,fi'
+NP,NPL,524,.np,Nepal,'ne,en'
+NR,NRU,520,.nr,Nauru,'na,en-NR'
+NU,NIU,570,.nu,Niue,'niu,en-NU'
+NZ,NZL,554,.nz,New Zealand,'en-NZ,mi'
+OM,OMN,512,.om,Oman,'ar-OM,en,bal,ur'
+PA,PAN,591,.pa,Panama,'es-PA,en'
+PE,PER,604,.pe,Peru,'es-PE,qu,ay'
+PF,PYF,258,.pf,French Polynesia,'fr-PF,ty'
+PG,PNG,598,.pg,Papua New Guinea,'en-PG,ho,meu,tpi'
+PH,PHL,608,.ph,Philippines,'tl,en-PH,fil'
+PK,PAK,586,.pk,Pakistan,'ur-PK,en-PK,pa,sd,ps,brh'
+PL,POL,616,.pl,Poland,pl
+PM,SPM,666,.pm,Saint Pierre and Miquelon,fr-PM
+PN,PCN,612,.pn,Pitcairn,en-PN
+PR,PRI,630,.pr,Puerto Rico,'en-PR,es-PR'
+PS,PSE,275,.ps,Palestinian Territory,ar-PS
+PT,PRT,620,.pt,Portugal,'pt-PT,mwl'
+PW,PLW,585,.pw,Palau,'pau,sov,en-PW,tox,ja,fil,zh'
+PY,PRY,600,.py,Paraguay,'es-PY,gn'
+QA,QAT,634,.qa,Qatar,'ar-QA,es'
+RE,REU,638,.re,Reunion,fr-RE
+RO,ROU,642,.ro,Romania,'ro,hu,rom'
+RS,SRB,688,.rs,Serbia,'sr,hu,bs,rom'
+RU,RUS,643,.ru,Russia,'ru,tt,xal,cau,ady,kv,ce,tyv,cv,udm,tut,mns,bua,myv,mdf,chm,ba,inh,tut,kbd,krc,ava,sah,nog'
+RW,RWA,646,.rw,Rwanda,'rw,en-RW,fr-RW,sw'
+SA,SAU,682,.sa,Saudi Arabia,ar-SA
+SB,SLB,90,.sb,Solomon Islands,'en-SB,tpi'
+SC,SYC,690,.sc,Seychelles,'en-SC,fr-SC'
+SD,SDN,729,.sd,Sudan,'ar-SD,en,fia'
+SS,SSD,728,.sd,South Sudan,en
+SE,SWE,752,.se,Sweden,'sv-SE,se,sma,fi-SE'
+SG,SGP,702,.sg,Singapore,'cmn,en-SG,ms-SG,ta-SG,zh-SG'
+SH,SHN,654,.sh,Saint Helena,en-SH
+SI,SVN,705,.si,Slovenia,'sl,sh'
+SJ,SJM,744,.sj,Svalbard and Jan Mayen,'no,ru'
+SK,SVK,703,.sk,Slovakia,'sk,hu'
+SL,SLE,694,.sl,Sierra Leone,'en-SL,men,tem'
+SM,SMR,674,.sm,San Marino,it-SM
+SN,SEN,686,.sn,Senegal,'fr-SN,wo,fuc,mnk'
+SO,SOM,706,.so,Somalia,'so-SO,ar-SO,it,en-SO'
+SR,SUR,740,.sr,Suriname,'nl-SR,en,srn,hns,jv'
+ST,STP,678,.st,Sao Tome and Principe,pt-ST
+SV,SLV,222,.sv,El Salvador,es-SV
+SX,SXM,534,.sx,Sint Maarten,'nl,en'
+SY,SYR,760,.sy,Syria,'ar-SY,ku,hy,arc,fr,en'
+SZ,SWZ,748,.sz,Swaziland,'en-SZ,ss-SZ'
+TC,TCA,796,.tc,Turks and Caicos Islands,en-TC
+TD,TCD,148,.td,Chad,'fr-TD,ar-TD,sre'
+TF,ATF,260,.tf,French Southern Territories,fr
+TG,TGO,768,.tg,Togo,'fr-TG,ee,hna,kbp,dag,ha'
+TH,THA,764,.th,Thailand,'th,en'
+TJ,TJK,762,.tj,Tajikistan,'tg,ru'
+TK,TKL,772,.tk,Tokelau,'tkl,en-TK'
+TL,TLS,626,.tp,East Timor,'tet,pt-TL,id,en'
+TM,TKM,795,.tm,Turkmenistan,'tk,ru,uz'
+TN,TUN,788,.tn,Tunisia,'ar-TN,fr'
+TO,TON,776,.to,Tonga,'to,en-TO'
+TR,TUR,792,.tr,Turkey,'tr-TR,ku,diq,az,av'
+TT,TTO,780,.tt,Trinidad and Tobago,'en-TT,hns,fr,es,zh'
+TV,TUV,798,.tv,Tuvalu,'tvl,en,sm,gil'
+TW,TWN,158,.tw,Taiwan,'zh-TW,zh,nan,hak'
+TZ,TZA,834,.tz,Tanzania,'sw-TZ,en,ar'
+UA,UKR,804,.ua,Ukraine,'uk,ru-UA,rom,pl,hu'
+UG,UGA,800,.ug,Uganda,'en-UG,lg,sw,ar'
+UM,UMI,581,.um,United States Minor Outlying Islands,en-UM
+US,USA,840,.us,United States,'en-US,es-US,haw,fr'
+UY,URY,858,.uy,Uruguay,es-UY
+UZ,UZB,860,.uz,Uzbekistan,'uz,ru,tg'
+VA,VAT,336,.va,Vatican,'la,it,fr'
+VC,VCT,670,.vc,Saint Vincent and the Grenadines,'en-VC,fr'
+VE,VEN,862,.ve,Venezuela,es-VE
+VG,VGB,92,.vg,British Virgin Islands,en-VG
+VI,VIR,850,.vi,U.S. Virgin Islands,en-VI
+VN,VNM,704,.vn,Vietnam,'vi,en,fr,zh,km'
+VU,VUT,548,.vu,Vanuatu,'bi,en-VU,fr-VU'
+WF,WLF,876,.wf,Wallis and Futuna,'wls,fud,fr-WF'
+WS,WSM,882,.ws,Samoa,'sm,en-WS'
+YE,YEM,887,.ye,Yemen,ar-YE
+YT,MYT,175,.yt,Mayotte,fr-YT
+ZA,ZAF,710,.za,South Africa,'zu,xh,af,nso,en-ZA,tn,st,ts,ss,ve,nr'
+ZM,ZMB,894,.zm,Zambia,'en-ZM,bem,loz,lun,lue,ny,toi'
+ZW,ZWE,716,.zw,Zimbabwe,'en-ZW,sn,nr,nd'
+CS,SCG,891,.cs,Serbia and Montenegro,'cu,hu,sq,sr'
+AN,ANT,530,.an,Netherlands Antilles,'nl-AN,en,es'

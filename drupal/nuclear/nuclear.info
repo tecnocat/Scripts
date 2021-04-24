@@ -1,0 +1,8 @@
+; $Id$
+name = Nuclear
+description = Módulo nuclear 2000 total de la muerte mortífera
+dependencies[] = content
+package = CCK
+core = 6.x
+version = 6.x-1.x-dev
+project = nuclear

@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Remove path for security reasons
+unset PATH
+
+# Programs path (verify for your distro)
+RM=/bin/rm;
+MK=/bin/mkdir;
+TAR=/bin/tar;
+DATE=/bin/date;
+GREP=/bin/grep;
+GZIP=/bin/gzip;
+BZIP=/bin/bzip2;
+FIND=/usr/bin/find;
+MYSQL=/usr/bin/mysql;
+DUMP=/usr/bin/mysqldump;
+echo; echo 'You need to verify the program paths first'; echo;
+exit # comment this two lines after verify the paths
+
+# If no host passed to script take localhost
+if [ -z $1 ]; then
+  MYSQLUSER=drupal
+  MYSQLPASS=drupal
+  MYSQLHOST=localhost
+else
+  MYSQLUSER=$1
+  MYSQLPASS=$2
+  MYSQLHOST=$3
+fi
+
+# Where do you want to save the backups?
+BACKUPDIR=/home/tecnocat/workspace/databases/$MYSQLHOST
+DATETODAY=$($DATE +%Y-%m-%d-%H)
+
+# Create new backup dir
+if [ ! -d $BACKUPDIR ]; then
+  $MK $BACKUPDIR
+fi
+if [ ! -d $BACKUPDIR/$DATETODAY ]; then
+  $MK $BACKUPDIR/$DATETODAY
+fi
+
+# Delete old backups (30 days)
+$FIND $BACKUPDIR -mtime +30 -exec $RM -rf '{}' \;
+
+# Dump databases to .sql and compress
+for DATABASE in $(echo 'SHOW DATABASES;' | $MYSQL -u$MYSQLUSER -p$MYSQLPASS -h$MYSQLHOST | $GREP -v '^Database$'); do
+  cd $BACKUPDIR/$DATETODAY
+  FILETAR=$DATETODAY.tar
+  FILESQL=$DATABASE.sql
+  $DUMP                                                            \
+  -u$MYSQLUSER -p$MYSQLPASS -h$MYSQLHOST                           \
+  -Q -c -C --add-drop-table --add-locks --quick --lock-tables      \
+  $DATABASE > $FILESQL;
+  $BZIP -9 $FILESQL;
+done;
+
+# Package, compress and delete source
+cd $BACKUPDIR
+$TAR -cf $FILETAR --remove-files $DATETODAY/*;
+$GZIP -f9 $FILETAR;
+$RM -rf $DATETODAY;

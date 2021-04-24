@@ -1,0 +1,39 @@
+/*[fmt]1A20-1A0A-4*/
+#accordion P.sintaxis {
+  font-style: normal;
+  text-decoration: none;
+  color: #686868;
+}
+#accordion P.codigo {
+  background-color: #DCDCDC;
+  color: #412E97;
+  padding: 10px;
+  font-family: "Courier New";
+  font-size: 10pt;
+}
+#accordion P.codigo CODE SPAN {
+  line-height: 1.5;
+  font-family: "Courier New";
+  font-size: 10pt;
+}
+#accordion P.resultado {
+  font-style: italic;
+  color: #FF8000;
+  font-family: "Courier New";
+  font-size: 10pt;
+}
+A {
+  font-weight: bold;
+  /*[disabled]background-color:#FFC3AA;*/
+}
+#accordion .ui-state-default A {
+  color: #9E5C5C;
+}
+#accordion .ui-state-active A {
+  color: #17B901;
+}
+BODY {
+  font: normal normal normal 12px/100% Arial, Tahoma, Helvetica, sans-serif;
+  background-image: -webkit-gradient( linear, left top, right bottom, color-stop(0.29, rgb(203,201,209)), color-stop(0.65, rgb(86,163,168)), color-stop(0.83, rgb(90,189,130)) );
+  background-image: -moz-linear-gradient( left top, rgb(203,201,209) 29%, rgb(86,163,168) 65%, rgb(90,189,130) 83% );
+}

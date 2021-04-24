@@ -1,0 +1,88 @@
+127.0.0.1       localhost
+127.0.1.1       tecnocat
+172.21.1.209    drupal.vectorsf.com
+10.70.5.191     windows.vsf
+193.146.142.169 portales.red.es
+192.168.6.6     webvector.vectorsf.net
+192.168.6.32    mparquesreunidos.vectorsf.com
+#93.174.1.42    www.parquedeatracciones.es blog.parquedeatracciones.es
+93.174.1.42     www.zoomadrid.com
+#93.174.1.43    parquewarner.com www.parquewarner.com parquewarner.es www.parquewarner.es blog.parquewarner.com m.parquewarner.com m.parquewarner.es
+172.21.1.98     clinker-core
+172.21.1.99     clinker-frontend
+
+
+# Projects
+127.0.0.1       www.unicyl.dev
+127.0.0.1       www.arca.com
+127.0.0.1       www.arcamm.dev
+127.0.0.1       www.ebook.dev
+127.0.0.1       www.efactura.dev
+127.0.0.1       www.ficod.dev
+127.0.0.1       www.gestor-conocimiento.dev
+127.0.0.1       www.globomedia.dev
+127.0.0.1       www.muface.dev
+127.0.0.1       www.parquesreunidos.dev
+127.0.0.1       www.prestashop.dev
+127.0.0.1       www.red-es.dev
+127.0.0.1       www.telstar.dev
+127.0.0.1       www.unicyl.dev
+127.0.0.1       www.wordpress.dev
+127.0.0.1       www.valoraciones.dev
+127.0.0.1       www.vpclick-puntos.dev
+127.0.0.1       www.webvector.dev
+
+# Languagization xD
+
+#WEBS TELSTAR PD2 192.168.6.5
+#ar 
+192.168.6.5     vector-telstar.com.ar
+192.168.6.5     www.vector-telstar.com.ar
+192.168.6.5     instrumat.vector-telstar.com.ar
+192.168.6.5     lifesciences.vector-telstar.com.ar
+192.168.6.5     vacuum.vector-telstar.com.ar
+192.168.6.5     valueservices.vector-telstar.com.ar
+#br
+192.168.6.5     vector-telstar.br
+192.168.6.5     www.vector-telstar.br
+192.168.6.5     instrumat.vector-telstar.br
+192.168.6.5     lifesciences.vector-telstar.br
+192.168.6.5     vacuum.vector-telstar.br
+192.168.6.5     valueservices.vector-telstar.br
+#es
+192.168.6.5     vector-etelstar.com
+192.168.6.5     vector-telstar-instrumat.com
+192.168.6.5     vector-telstar-lifesciences.com
+192.168.6.5     vector-telstar-vacuum.com
+192.168.6.5     vector-telstar-valueservices.com
+
+
+#WEBS TELSTAR PD3 192.168.6.6
+#ar
+192.168.6.6     vectortest-telstar.com.ar
+192.168.6.6     www.vectortest-telstar.com.ar
+192.168.6.6     instrumat.vectortest-telstar.com.ar
+192.168.6.6     lifesciences.vectortest-telstar.com.ar
+192.168.6.6     vacuum.vectortest-telstar.com.ar
+192.168.6.6     valueservices.vectortest-telstar.com.ar
+#br
+192.168.6.6     vectortest-telstar.br
+192.168.6.6     www.vectortest-telstar.br
+192.168.6.6     instrumat.vectortest-telstar.br
+192.168.6.6     lifesciences.vectortest-telstar.br
+192.168.6.6     vacuum.vectortest-telstar.br
+192.168.6.6     valueservices.vectortest-telstar.br
+#es
+192.168.6.6     vectortest-etelstar.com
+192.168.6.6     vectortest-telstar-instrumat.com
+192.168.6.6     vectortest-telstar-lifesciences.com
+192.168.6.6     vectortest-telstar-vacuum.com
+192.168.6.6     vectortest-telstar-valueservices.com
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts

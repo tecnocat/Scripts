@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo kill $(ps -A | grep zdclient | cut -d ' ' -f 2);

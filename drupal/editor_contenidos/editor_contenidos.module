@@ -1,0 +1,347 @@
+<?php
+
+/**
+ * tecnocat
+ *
+ * @section LICENSE
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @details    Content editor module file.
+ * @category   COMPANY
+ * @version    $Id: editor_contenidos.module 0 2011-11-07 17:28:24 $
+ * @author     tecnocat
+ * @file       /sites/all/modules/custom/editor_contenidos/editor_contenidos.module
+ * @date       2011-11-07 17:28:24
+ * @copyright  GNU Public License.
+ * @link       http://www.gnu.org/licenses/gpl.html
+ *
+ */
+
+/**
+ * Implements hook_menu() - tecnocat
+ */
+function editor_contenidos_menu() {
+
+  $menu = array();
+
+  $menu['Editor.html'] = array(
+    'title'            => t('Editor'),
+    'page callback'    => '_editor_contenidos_flex',
+    'page arguments'   => array(),
+    'access arguments' => array('access editor company'),
+    'type'             => MENU_CALLBACK,
+  );
+
+  return $menu;
+}
+
+/**
+ * Implements hook_theme() - tecnocat
+ */
+function editor_contenidos_theme() {
+
+  $theme = array();
+
+  $theme['flexviewer'] = array(
+    'arguments' => array('data' => null),
+    'template'  => 'sites/all/themes/company/flexviewer',
+  );
+
+  return $theme;
+}
+
+/**
+ * Implements hook_permission() - tecnocat
+ */
+function editor_contenidos_permission() {
+
+  $permission = array();
+
+  $permission['access editor company'] = array(
+    'title'       => t('Access to company Flex Editor'),
+    'description' => t('Allow acces to company Flex Editor'),
+  );
+  $permission['share own documents'] = array(
+    'title'       => t('Share own documents'),
+    'description' => t('Allow document sharing on editor'),
+  );
+
+  return $permission;
+}
+
+/**
+ * Implements hook_services_resources() - tecnocat
+ */
+function editor_contenidos_services_resources() {
+
+  require_once 'resources/biblio_resource.inc';
+  require_once 'resources/message_resource.inc';
+  require_once 'resources/contentlock_resource.inc';
+  require_once 'resources/pdf_resource.inc';
+  require_once 'resources/shareable_resource.inc';
+
+  $resources = array();
+
+  $resources += _biblio_resource_definition();
+  $resources += _message_resource_definition();
+  $resources += _contentlock_resource_definition();
+  $resources += _pdf_resource_definition();
+  $resources += _shareable_resource_definition();
+
+  return $resources;
+}
+
+/**
+ * Implements hook_views_pre_execute() - tecnocat
+ */
+function editor_contenidos_query_alter(QueryAlterableInterface $query) {
+
+  if (isset($query->alterMetaData) AND isset($query->alterMetaData['view'])) {
+
+    if ($query->alterMetaData['view']->name == 'biblio') {
+
+      //$fields      =& $query->getFields();
+      $expressions =& $query->getExpressions();
+      //$tables      =& $query->getTables();
+      //$order       =& $query->getOrderBy();
+      //$where       =& $query->conditions();
+      //$having      =& $query->havingConditions();
+      $group_concat = $expressions['biblio_contributor_data_name']['expression'];
+      $group_concat = str_replace("SUM(", "GROUP_CONCAT(' ', ", $group_concat);
+      $expressions['biblio_contributor_data_name']['expression'] = $group_concat;
+    }
+  }
+}
+
+/**
+ * Function to easy send mail with templates - tecnocat
+ *
+ * @param $type (string) Type of template to use
+ * @param $accounts (array) List of receivers
+ * @param $message (string) Body of the message
+ */
+function _company_send_email($type, $accounts, $subject,$message) {
+
+  $return = array();
+
+  foreach ($accounts as $account) {
+    $params['account'] = $account;
+    $params['message'] = $message;
+    $params['subject'] = $subject;
+    $return[$account]  = drupal_mail('company', $type, $account, user_preferred_language($account), $params);
+  }
+
+  return $return;
+}
+
+/**
+ * Function to process sen mail with templates - tecnocat
+ *
+ * @param $type (string) Type of template to use
+ * @param $message (array) Drupal constructor reference
+ * @param $params (array) Drupal constructor data
+ */
+function company_mail($type, &$message, $params) {
+
+  global $user;
+
+  switch($type) {
+
+    case 'reset_password':
+      $message['subject'] = $params['subject'];
+      $message['body'][]  = $params['message'];
+      break;
+
+  }
+}
+
+/**
+ * Function to show the main Flex RIA - tecnocat
+ */
+function _editor_contenidos_flex() {
+
+  global $base_url;
+
+  $jquery = 'jquery-1.7.1.min.js';
+  $old_js = 'misc/jquery.js';
+  $new_js = drupal_get_path('theme', 'company') . '/js/' . $jquery;
+
+  $data = array(
+    'baseurl'   => $base_url,
+    'flexurl'   => $base_url . '/sites/all/themes/company/flex/',
+    'page_head' => drupal_get_html_head(),
+    'page_css'  => drupal_get_css(),
+    'page_js'   => str_replace($old_js, $new_js, drupal_get_js()),
+  );
+
+  die(theme('flexviewer', $data));
+}
+
+/**
+ * Implements hook_services_resources_alter() - tecnocat
+ */
+function editor_contenidos_services_resources_alter(&$resources, $endpoint) {
+
+  if (isset($resources['user'])) {
+
+    if (isset($resources['user']['actions'])) {
+
+      if (!isset($resources['user']['actions']['password2'])) {
+        $resources['user']['actions']['password2'] = array();
+      }
+
+      $resources['user']['actions']['password2'] += array(
+        'help' => t('Reset passord for a user'),
+        'callback' => '_editor_contenidos_password',
+        'args' => array(
+          array(
+            'name' => 'email',
+            'type' => 'string',
+            'description' => t('email or name address of user to reset password'),
+            'source' => array ('data' => 'email' ),
+            'optional' => FALSE
+          ),
+        ),
+        'access callback' => 'services_access_menu',
+        'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+      );
+    }
+  }
+}
+
+/**
+ * Custom function - tecnocat
+ */
+function _editor_contenidos_password($data) {
+
+  global $user;
+
+  $email   = variable_get('site_mail', 'root@localhost');
+  $message = array(
+    'to' => $email,
+    'subject' => t('Reset passord for a user'),
+    'body' => $data,
+    'headers' => array(
+      'MIME-Version' => '1.0',
+      'Content-type' => 'text/html; charset=uft-8',
+    ),
+  );
+  extract($message);
+
+  return _company_send_email('reset_password', array($email), $subject, $body);
+}
+
+/**
+ * Sharing functionalities and ACL settings
+ */
+
+/**
+ * Used by the ACL module.
+ */
+function _editor_contenidos_enabled() {
+  return !_editor_contenidos_disabling();
+}
+
+/**
+ * Implements hook_disable().
+ */
+function _editor_contenidos_disable() {
+  _editor_contenidos_disabling(TRUE);
+}
+
+/**
+ * Remembers if we have disabled access.
+ */
+function _editor_contenidos_disabling($set = NULL) {
+  static $disabling = FALSE;
+
+  if (isset($set)) {
+    $disabling = $set;
+  }
+  return $disabling;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function editor_contenidos_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'editor_contenidos') . '/views',
+  );
+}
+
+/*
+ * Sharing function
+ */
+function _editor_contenidos_share($nid, $uid = false){
+  // load current user
+  global $user;
+  // recipients array for privatemsg
+  $recipients = array();
+  // acl id
+  $acl_id = acl_get_id_by_name('editor_contenidos', 'update_' . $nid);
+
+  // if acl_id exists clear list.
+  if($acl_id){
+    acl_node_clear_acls($nid, 'editor_contenidos');
+    acl_delete_acl($acl_id);
+  }
+  if(!$uid){
+    // delete share functionality
+    return true;
+  }else{
+    // create share functionality
+    $acl_id = acl_create_new_acl('editor_contenidos', 'update_' . $nid);
+    acl_node_add_acl($nid, $acl_id, 1, 1, 0);
+
+    foreach($uid as $user_id){
+      // add user to acl
+      acl_add_user($acl_id, $user_id);
+      // add user ids to privatemsg recipients
+      $recipients[] = user_load($user_id);
+    }
+
+    // get node info
+    $node = node_load($nid);
+    $message = (object)array();
+    $message->subject = t('A new document has been shared with you');
+    $message->body = t("You have received an invitation to share the following document: !doc", array('!doc' => $node->title));
+    $message->format = 'plain_text';
+
+    $validate = privatemsg_new_thread($recipients, $message->subject, $message->body, $message);
+
+    return true;
+  }
+}
+
+function _editor_contenidos_access($author, $node) {
+  // check if user is author in node table
+  if($author->uid == 1){
+    return true;
+  }else
+  if($node->uid == $author->uid){
+    return true;
+  }else{
+    // check acl rights for write perms
+    $acl_id = acl_get_id_by_name('editor_contenidos', 'update_' . $node->nid);
+    $result = db_query('SELECT a.uid FROM {acl_user} a WHERE a.acl_id = :acl_id AND a.uid = :uid', array(':acl_id' => $acl_id,':uid' => $user->uid))->fetchField();
+    if($result){
+      return true;
+    }else{
+      return false;
+    }
+  }
+}

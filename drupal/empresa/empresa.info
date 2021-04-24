@@ -1,0 +1,8 @@
+; $Id: company.info,v 1.0 2010/05/11 10:16:14 tecnocat Exp $
+name = Empresa
+description = Funciones específicas para el contenido Empresa
+package = company
+core = 6.x
+dependencies[] = content_copy
+dependencies[] = content
+dependencies[] = company

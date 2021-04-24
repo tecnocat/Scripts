@@ -1,0 +1,172 @@
+<?php
+
+function n($v = NULL) {
+  $d = debug_backtrace();
+  dsm('Line: ' . $d[0]['line'] . ' Function: ' . $d[1]['function']);
+  if ($v) { dsm($v); }
+}
+
+/**
+ * @file: Module settings
+ * @todo: Comentar todas las líneas de ejecución
+ */
+
+
+/**
+ * Defines
+ */
+define('NUCLEAR_MAX_LENGTH_NAME',  32);
+define('NUCLEAR_MAX_LENGTH_EMAIL', 64);
+define('NUCLEAR_IS_REQUIRED_NAME',  1);
+define('NUCLEAR_IS_REQUIRED_EMAIL', 0);
+
+
+/**
+ * Implementation of hooh_init().
+ */
+function nuclear_init() {
+  n();
+
+  // Cargamos todos los archivos esenciales del modulo
+  foreach (array('field', 'widget', 'formatter') as $module) {
+    if (module_load_include('inc', 'nuclear', 'nuclear_' . $module) === FALSE) {
+      $error = t('The module %module is missing.', array('%module' => $module));
+      drupal_set_message(t('Nuclear error:') . ' ' . $error, 'error');
+    }
+  }
+}
+
+
+/**
+ * Implementation of hook_theme().
+ */
+function nuclear_theme() {
+  n();
+
+  $theme = array();
+
+  $theme['email'] = array(
+    'arguments' => array('element' => NULL),
+  );
+
+  $theme['name'] = array(
+    'arguments' => array('element' => NULL),
+  );
+
+  return $theme;
+}
+
+
+/**
+ * Theme function for 'width_email' field formatter.
+ */
+function theme_email($element) {
+  n();
+  return $element . ' (e-mail)';
+}
+
+
+/**
+ * Theme function for 'widthout_email' field formatter.
+ */
+function theme_name($element) {
+  n();
+  return '<a href="#">' . $element . '</a>';
+}
+
+
+/**
+ * Implementation of hook_content_is_empty().
+ */
+function nuclear_content_is_empty($item, $field) {
+  n();
+  return (empty($item['value']) AND ((string) $item['value'] !== '0'));
+}
+
+
+/**
+ * Implementation of hook_elements().
+ */
+function nuclear_elements() {
+  n();
+
+  $elements = array();
+
+  // Es muy importante que el índice sea el mismo nombre que en hook_widget_info
+  $elements['nuclear'] = array(
+    '#input' => TRUE,
+    //'#columns' => array('value'),
+    //'#delta' => 0,
+    '#process' => array('nuclear_process'),
+    //'#autocomplete_path' => FALSE,
+  );
+
+  return $elements;
+}
+
+
+/**
+ *
+ */
+function nuclear_process($element, $edit, $form_state, $form) {
+  n();
+
+  $field = $form['#field_info'][$element['#field_name']];
+  $delta = $element['#delta'];
+
+  foreach (array('name', 'email') as $id) {
+
+    $value = $element['#value'][$id];
+    $default_value = isset($value) ? $value : NULL;
+
+    $element[$id] = array(
+     '#type' => 'textfield',
+     '#maxlength' => $element['#field']['field_max_length_' . $id],
+     '#title' => t($id),
+     '#description' => $id . ' of corresponsal',
+     '#required' => $element['#field']['field_required_' . $id],
+     '#default_value' => $default_value,
+    );
+  }
+
+  return $element;
+}
+
+
+/**
+ * Implementation of hook_content_generate().
+ */
+function nuclear_content_generate($node, $field) {
+  n();
+
+  if (content_handle('widget', 'multiple values', $field) == CONTENT_HANDLE_MODULE) {
+    return content_devel_multiple('_nuclear_content_generate', $node, $field);
+  }
+  else {
+    return _nuclear_content_generate($node, $field);
+  }
+}
+
+
+/**
+ * Helper function for hook_content_generate().
+ */
+function _nuclear_content_generate($node, $field) {
+  n();
+
+
+  $generate = array();
+
+  if ($field['widget']['type'] == 'nuclear_widget') {
+    $name = devel_create_greeking(3, TRUE);
+    $host = devel_create_greeking(1, TRUE);
+    $user = str_replace(' ', '', devel_create_greeking(rand(1, 3), TRUE));
+    $tdln = drupal_substr(devel_create_greeking(1, TRUE), 0, 3);
+
+    $generate['name_value'] = $name;
+    $generate['email_value'] = $user . '@' . $host . '.' . $tdln;
+  }
+
+  return $generate;
+}
+

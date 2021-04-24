@@ -1,0 +1,9 @@
+#!/bin/bash
+echo 'Recuperando sistema de arranque...'
+sudo mkdir /linux
+sudo mount /dev/sda2 /linux
+sudo mount -t proc /proc /linux/proc
+sudo mount --bind /dev /linux/dev
+echo 'Ejecuta grub-install /dev/sda && exit'
+sudo chroot /linux
+echo 'Ahora reinicia y ejecuta sudo update-grub'

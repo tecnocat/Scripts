@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+  ServerName www.muface.dev
+  ServerAdmin root@localhost
+  DocumentRoot /home/tecnocat/workspace/muface
+  <Directory /home/tecnocat/workspace/muface/>
+    Options Indexes +FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+  ErrorLog /var/log/apache2/www.muface.dev.error.log
+  # Possible values include: debug, info, notice, warn, error, crit,
+  # alert, emerg.
+  LogLevel debug
+  CustomLog /var/log/apache2/www.muface.dev.access.log combined
+</VirtualHost>

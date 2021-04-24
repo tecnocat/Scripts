@@ -1,0 +1,48 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * TODO: Enter file description here.
+ */
+
+
+/**
+ * Implementation of hook_enable().
+ */
+function nuclear_enable() {
+
+}
+
+
+/**
+ * Implementation of hook_disable().
+ */
+function nuclear_disable() {
+
+}
+
+
+/**
+ * Implementation of hook_install().
+ */
+function nuclear_install() {
+
+}
+
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function nuclear_uninstall() {
+
+}
+
+
+/**
+ * Implementation of hook_update_N().
+ */
+function nuclear_update_N(&$sandbox) {
+
+}
+

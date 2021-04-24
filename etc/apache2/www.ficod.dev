@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+  ServerName www.ficod.dev
+  ServerAdmin root@localhost
+  DocumentRoot /home/tecnocat/workspace/ficod
+  <Directory /home/tecnocat/workspace/ficod/>
+    Options Indexes +FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+  ErrorLog /var/log/apache2/www.ficod.dev.error.log
+  # Possible values include: debug, info, notice, warn, error, crit,
+  # alert, emerg.
+  LogLevel debug
+  CustomLog /var/log/apache2/www.ficod.dev.access.log combined
+</VirtualHost>

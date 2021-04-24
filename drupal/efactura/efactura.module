@@ -1,0 +1,118 @@
+<?php /* UTF-8 Verified (áéíóú) */
+
+// $Id$
+
+/*
+ *  Módulo para enviar comentarios por e-mail al administrador del sitio.
+ */
+
+/**
+ * Implementation of hook_block().
+ */
+function efactura_block($op = 'list', $delta = 0) {
+  if ($op == 'list') {
+    $blocks[0]['info'] = t('Send comments form');
+    return $blocks;
+  }
+  elseif ($op == 'view') {
+    if (user_access('access content')) {
+      $block['title'] = t('Déjanos tus sugerencias');
+      $block['content'] = drupal_get_form('efactura_form');
+    }
+    return $block;
+  }
+}
+
+/**
+ * Implementation of hook_form_validate().
+ */
+function efactura_form_validate($form, &$form_state) {
+  if (!empty($form_state['values']['envia_comentario'])) {
+    $form_state['values']['envia_comentario'] = check_plain($form_state['values']['envia_comentario']);
+  }
+  else {
+    form_set_error('envia_comentario',t('You can\'t send an empty message!'));
+  }
+}
+
+/**
+ * Implementation of hook_form_submit().
+ */
+function efactura_form_submit($form, &$form_state) {
+  envia_email('comentario',array(variable_get('site_mail','root@localhost')),$form_state['values']['envia_comentario']);
+}
+
+/**
+ * Implementation of hook_form().
+ */
+function efactura_form() {
+  $form['envia_comentario'] = array(
+    '#type' => 'textarea',
+    '#colon' => FALSE,
+    '#title' => t('Ayúdanos a mejorar con tus ideas.'),
+    '#cols' => 60,
+    '#rows' => 5,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send'),
+  );
+  return $form;
+}
+
+/**
+ * Send mail function.
+ */
+function envia_email($type, $accounts, $message) {
+  foreach ($accounts as $account) {
+    $params['account'] = $account;
+    $params['message'] = $message;
+    drupal_mail('efactura', $type, $account, user_preferred_language($account), $params);
+  }
+  drupal_set_message('Gracias por su colaboración. Su ' . $type . ' se ha enviado correctamente.');
+}
+
+/**
+ * Comment build function.
+ */
+function efactura_mail($type, &$message, $params) {
+  global $user;
+  switch($type) {
+    case 'comentario':
+      $message['subject'] = 'Nuevo comentario desde efactura';
+      $message['body'][] = $params['message'];
+      break;
+    case 'encuesta':
+      $message['subject'] = 'Nueva votación desde efactura';
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+
+/**
+ * Hook Form alter
+ */
+function efactura_form_poll_view_voting_alter(&$form, &$form_state) {
+  if ($form['#node']->nid == 12) {
+    $form['vote']['#submit'][] = 'efactura_poll_email';
+  }
+}
+
+/**
+ * Hook Form alter
+ */
+function efactura_form_search_block_form_alter(&$form, &$form_state) {
+  //print_r($form);
+  unset($form['search_block_form']['#title']);
+  $form['submit']['#attributes']['class'] = 'BtnBuscador';
+}
+
+function efactura_poll_email(&$form, &$form_state) {
+  envia_email('encuesta',array(variable_get('site_mail','root@localhost')),$form['#node']->title . ': ' . $form['choice']['#options'][$form_state['values']['choice']]);
+}
+
+function efactura_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form['#parameters'][1]['view']->name == 'buscar' && $form['#parameters'][1]['view']->current_display == 'page_1') {
+    $form['#action'] = url('buscar');
+  }
+}

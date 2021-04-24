@@ -1,0 +1,64 @@
+<?php /* UTF-8 Verified (áéíóú) */
+
+// $Id$
+
+/**
+ * Implementation of hook_install()
+ */
+function empresa_install() {
+  drupal_install_schema('empresa_updates');
+}
+
+/**
+ * Implementation of hook_schema()
+ */
+function empresa_schema() {
+  $schema['empresa_updates'] = array(
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'unsigned' => true,
+        'not null' => true,
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+      ),
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => true,
+      ),
+      'date' => array(
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+
+/**
+ * Implementation of hook_update_NNNNN().
+ */
+function empresa_update_6100() {
+  $return = array();
+  $return[] = update_sql("UPDATE {system} SET weight = 297 WHERE type = 'module' AND name = 'empresa'");
+  return $return;
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function empresa_uninstall() {
+  $query = "DELETE FROM {variable} WHERE name LIKE 'empresa%'";
+  db_query($query);
+}

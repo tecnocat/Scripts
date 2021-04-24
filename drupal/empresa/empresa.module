@@ -1,0 +1,80 @@
+<?php /* UTF-8 Verified (áéíóú) */
+
+// $Id$
+
+/**
+ * Implements hook_init()
+ */
+function empresa_init() {
+  module_load_include('inc', 'empresa', 'empresa.blocks');
+  module_load_include('inc', 'empresa', 'empresa.forms');
+  module_load_include('inc', 'empresa', 'empresa.import.competences');
+  if ($_GET['q'] == 'node/add/empresa') {
+    if (user_access('edit own empresa content') && user_access('create empresa content') && user_access('access content')) {
+      global $user;
+      profile_load_profile($user);
+      if (empty($user->empresa_created)) {
+        if (empty($user->empresa_confirm)) {
+          drupal_goto('alta/empresa/confirm');
+        }
+      }
+      else {
+        $replaces = array(
+          '%username' => $user->name . ' ' . $user->profile_apellido,
+          '%company' => $user->empresa_created,
+          '%ip' => $user->empresa_ip,
+        );
+        drupal_set_message(t('The user %username have been created the company %company from ip address: %ip, only can add one company for user.', $replaces),'error');
+        drupal_goto('<front>');
+      }
+    }
+    else {
+      drupal_set_message(t('You don\'t have access to create a new company.'),'error');
+      drupal_goto('<front>');
+    }
+  }
+}
+
+/**
+ * Implementation on hook_menu()
+ */
+function empresa_menu() {
+  $menus['alta/empresa/confirm'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_empresa_confirmar_autorizacion'),
+    'access arguments' => array('access content'),
+  );
+  $menus['alta/empresa/finish/%node'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_empresa_finalizar_proceso'),
+    'access arguments' => array('access content'),
+  );
+  $menus['insert/worker'] = array (
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_empresa_get_workers'),
+    'access arguments' => array('access content'),
+  );
+  return $menus;
+}
+
+/**
+ * Implements hook_theme($existing, $type, $theme, $path)
+ */
+function empresa_theme() {
+  return array(
+    'lastupdates' => array(
+      'arguments' => array('data' => NULL),
+      'template' => 'templates/lastupdates',
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_api()
+ */
+function empresa_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'empresa'),
+  );
+}

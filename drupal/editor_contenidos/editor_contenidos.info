@@ -1,0 +1,9 @@
+name = Editor Contenidos
+description = Proporciona servicios específicos para COMPANY.
+package = COMPANY
+core = 7.x
+php = 5.x
+
+dependencies[] = services
+dependencies[] = privatemsg
+dependencies[] = biblio
